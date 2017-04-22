@@ -1,5 +1,4 @@
 angular.module('submissionsHub', ['ui.router', 'templates'])
-.config([])
 .controller('MainCtrl', [
   '$scope',
   function($scope) {
