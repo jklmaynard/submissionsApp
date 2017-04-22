@@ -5,7 +5,7 @@ angular.module('submissionsHub', ['ui.router', 'templates'])
   function($stateProvider, $urlRouterProvider) {
     $stateProvider.state('home', {
       url: '/home',
-      templateUrl: 'home/_home.html',
+      templateUrl: 'partials/_home.html',
       controller: 'HomeCtrl',
       resolve: {
         promise: ['api', function(api) {
@@ -15,6 +15,16 @@ angular.module('submissionsHub', ['ui.router', 'templates'])
             }
           };
         }]}
+    });
+    $stateProvider.state('poems', {
+      url: '/poems/{id}',
+      templateUrl: 'partials/_poems.html',
+      controller: 'PoemsCtrl',
+      resolve: {
+        poem: ['$stateParams', 'api', function($stateParams, api) {
+          return api.get('poems', $stateParams.id);
+        }]
+      }
     });
     $urlRouterProvider.otherwise('home');
   }

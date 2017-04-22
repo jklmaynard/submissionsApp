@@ -12,6 +12,11 @@ angular.module('submissionsHub')
         angular.copy(data.data, obj[model]);
       });
     };
+    obj.get = function(model, id) {
+      return $http.get('/' + model + '/' + id + '.json').then(function(data) {
+        return data.data;
+      })
+    }
     return obj;
   }
 ]);

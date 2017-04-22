@@ -2,7 +2,7 @@
   <h1>Hello World!</h1>
 
   <div ng-repeat="poem in poems">
-    <h1>{{poem.title}}</h1>
+    <a href="#!/poems/{{poem.id}}"><h1>{{poem.title}}</h1></a>
   </div>
   <div ng-repeat="submission in submissions">
     <h1>{{submission.name}}</h1>
