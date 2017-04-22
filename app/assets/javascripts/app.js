@@ -1,16 +1,21 @@
 angular.module('submissionsHub', ['ui.router', 'templates'])
-.controller('MainCtrl', [
-  '$scope',
-  function($scope) {
-    $scope.test = 'Hello world!';
-    $scope.poems = [
-      'poem 1',
-      'poem 2',
-      'poem 3'
-    ];
-    $scope.journals = [
-      'journal 1',
-      'journal 2'
-    ];
+.config([
+  '$stateProvider',
+  '$urlRouterProvider',
+  function($stateProvider, $urlRouterProvider) {
+    $stateProvider.state('home', {
+      url: '/home',
+      templateUrl: 'home/_home.html',
+      controller: 'HomeCtrl',
+      resolve: {
+        promise: ['api', function(api) {
+          for (key in api) {
+            if (typeof api[key] === "object") {
+              api.getAll(key);
+            }
+          };
+        }]}
+    });
+    $urlRouterProvider.otherwise('home');
   }
 ])
