@@ -17,6 +17,9 @@ angular.module('submissionsHub')
         return data.data;
       })
     }
+    obj.getSubmissions = function(model, id) {
+      return $http.get('/' + model + '/' + id + '/submissions.json');
+    }
     return obj;
   }
 ]);
