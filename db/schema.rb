@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170420221026) do
+ActiveRecord::Schema.define(version: 20170422170757) do
 
   create_table "journals", force: :cascade do |t|
     t.string   "title"
@@ -25,7 +25,7 @@ ActiveRecord::Schema.define(version: 20170420221026) do
     t.datetime "updated_at", null: false
   end
 
-  create_table "poems_submissions_tables", force: :cascade do |t|
+  create_table "poems_submissions", force: :cascade do |t|
     t.integer "poem_id"
     t.integer "submission_id"
   end
