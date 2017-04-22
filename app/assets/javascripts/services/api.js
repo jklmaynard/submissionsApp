@@ -14,11 +14,15 @@ angular.module('submissionsHub')
     };
     obj.get = function(model, id) {
       return $http.get('/' + model + '/' + id + '.json').then(function(data) {
-        return data.data;
+        model === "poems" ? data.data[0].submissions = data.data[1] : data.data[0].poems = data.data[1]
+        return data.data[0];
       })
     }
-    obj.getSubmissions = function(model, id) {
-      return $http.get('/' + model + '/' + id + '/submissions.json');
+    obj.getJournal = function(id) {
+      return $http.get('/journals/' + id + '.json')
+    }
+    obj.getPoems = function(submission_id) {
+      $http.get('/poems.json')
     }
     return obj;
   }

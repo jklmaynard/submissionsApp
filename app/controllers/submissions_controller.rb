@@ -5,7 +5,9 @@ class SubmissionsController < ApplicationController
     end
 
     def show
-      respond_with Submission.find(params[:id])
+      submission = Submission.find(params[:id])
+      poems = submission.poems
+      respond_with [submission, poems]
     end
 
     def create
@@ -13,6 +15,6 @@ class SubmissionsController < ApplicationController
     end
   private
     def submission_params
-      params.require(:submission).permit(:name)
+      params.require(:submission).permit(:name, :poems)
     end
 end

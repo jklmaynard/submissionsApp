@@ -26,6 +26,16 @@ angular.module('submissionsHub', ['ui.router', 'templates'])
         }]
       }
     });
+    $stateProvider.state('submissions', {
+      url: '/submissions/{id}',
+      templateUrl: 'partials/_submissions.html',
+      controller: 'SubmissionsCtrl',
+      resolve: {
+        submission: ['$stateParams', 'api', function($stateParams, api) {
+          return api.get('submissions', $stateParams.id);
+        }]
+      }
+    })
     $urlRouterProvider.otherwise('home');
   }
 ])
