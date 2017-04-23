@@ -5,7 +5,9 @@ class PoemsController < ApplicationController
   end
 
   def show
-    respond_with Poem.find(params[:id])
+    poem = Poem.find(params[:id])
+    submissions = poem.submissions
+    respond_with [poem, submissions]
   end
 
   def create

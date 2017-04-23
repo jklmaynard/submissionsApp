@@ -6,5 +6,6 @@ angular.module('submissionsHub')
   function($scope, api, poem) {
     $scope.test = 'Hello world!'
     $scope.poem = poem;
+    $scope.submissions = poem.submissions
   }
 ])
