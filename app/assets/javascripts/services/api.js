@@ -14,8 +14,13 @@ angular.module('submissionsHub')
     };
     obj.get = function(model, id) {
       return $http.get('/' + model + '/' + id + '.json').then(function(data) {
-        model === "poems" ? data.data[0].submissions = data.data[1] : data.data[0].poems = data.data[1]
-        return data.data[0];
+        if (model === "journals") {
+          data.data[0].submissions = data.data[1];
+          return data.data[0];
+        } else {
+          model === "poems" ? data.data[0].submissions = data.data[1] : data.data[0].poems = data.data[1]
+          return data.data[0];
+        }
       })
     }
     obj.getJournal = function(id) {

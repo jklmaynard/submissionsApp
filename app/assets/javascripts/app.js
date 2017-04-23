@@ -35,6 +35,16 @@ angular.module('submissionsHub', ['ui.router', 'templates'])
           return api.get('submissions', $stateParams.id);
         }]
       }
+    });
+    $stateProvider.state('journals', {
+      url: '/journals/{id}',
+      templateUrl: 'partials/_journals.html',
+      controller: 'JournalsCtrl',
+      resolve: {
+        journal: ['$stateParams', 'api', function($stateParams, api) {
+          return api.get('journals', $stateParams.id)
+        }]
+      }
     })
     $urlRouterProvider.otherwise('home');
   }

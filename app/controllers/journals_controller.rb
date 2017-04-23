@@ -5,7 +5,9 @@ class JournalsController < ApplicationController
     end
 
     def show
-      respond_with Journal.find(params[:id])
+      journal = Journal.find(params[:id])
+      submissions = Submission.where(journal_id: journal.id)
+      respond_with [journal, submissions]
     end
 
     def create
