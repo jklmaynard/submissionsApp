@@ -45,7 +45,20 @@ angular.module('submissionsHub', ['ui.router', 'templates'])
           return api.get('journals', $stateParams.id)
         }]
       }
-    })
+    });
+    $stateProvider.state('new-submission', {
+      url: '/new-submission',
+      templateUrl: 'partials/_new-submission.html',
+      controller: 'HomeCtrl',
+      resolve: {
+        promise: ['api', function(api) {
+          for (key in api) {
+            if (typeof api[key] === "object") {
+              api.getAll(key);
+            }
+          };
+        }]}
+    });
     $urlRouterProvider.otherwise('home');
   }
 ])

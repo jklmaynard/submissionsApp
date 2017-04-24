@@ -11,5 +11,18 @@ angular.module('submissionsHub')
       api.createPoem({title: $scope.title});
       $scope.title = '';
     };
+    $scope.selection = {poem_ids: {}, journal: {}};
+    $scope.addSubmission = function() {
+      var selectedPoems = [];
+      if (!$scope.name || $scope.name === '') {return};
+      for (key in $scope.selection.poem_ids) {
+        selectedPoems.push(parseInt(key));
+      }
+      api.createSubmission({
+        name: $scope.name,
+        poems: selectedPoems,
+        journal: $scope.selection.journal
+      });
+    }
   }
 ])
