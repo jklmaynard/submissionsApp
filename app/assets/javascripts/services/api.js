@@ -36,7 +36,7 @@ angular.module('submissionsHub')
     };
     obj.createSubmission = function(submission) {
       return $http.post('/submissions.json', submission).then(function(data) {
-        obj.submission.push(data.data);
+        obj.submissions.push(data.data);
       })
     }
     return obj;

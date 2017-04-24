@@ -8,7 +8,7 @@
     </span>
     <span ng-repeat="journal in journals">
       <label for="">
-        <input type="radio" ng-model="selection.journal" value={{journal}}>{{journal.title}}</input>
+        <input type="radio" ng-model="selection.journal" value={{journal.id}}>{{journal.title}}</input>
       </label>
     </span>
     <pre ng-bind="selection.poem_ids | json"></pre>
