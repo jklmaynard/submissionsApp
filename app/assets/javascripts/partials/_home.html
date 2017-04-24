@@ -1,13 +1,26 @@
-<div class="">
-  <h1>Hello World!</h1>
-  <div ng-repeat="poem in poems">
-    <a href="#!/poems/{{poem.id}}"><h1>{{poem.title}}</h1></a>
+<div class="" style="display:flex">
+  <div class="col-md-4">
+    <div class="home-list-div">
+      <h3>Poems</h3>
+      <ul ng-repeat="poem in poems">
+        <a href="#!/poems/{{poem.id}}"><li>{{poem.title}}</li></a>
+      </ul>
+    </div>
   </div>
-  <div ng-repeat="submission in submissions">
-    <a href="#!/submissions/{{submission.id}}"><h1>{{submission.name}}</h1></a>
+  <div class="col-md-4">
+    <div class="home-list-div">
+      <h3>Submissions</h3>
+      <ul ng-repeat="submission in submissions">
+        <a href="#!/submissions/{{submission.id}}"><li>{{submission.name}}</li></a>
+      </ul>
+    </div>
   </div>
-  <div ng-repeat="journal in journals">
-    <a href="#!/journals/{{journal.id}}"><h1>{{journal.title}}</h1></a>
+  <div class="col-md-4">
+    <div class="home-list-div">
+      <h3>Journals</h3>
+      <ul ng-repeat="journal in journals">
+        <a href="#!/journals/{{journal.id}}"><li>{{journal.title}}</li></a>
+      </ul>
+    </div>
   </div>
-
 </div>
