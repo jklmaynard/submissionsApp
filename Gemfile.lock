@@ -47,6 +47,8 @@ GEM
       railties (>= 4.2, < 6)
       sprockets (>= 3.0, < 5)
       tilt
+    angular_rails_csrf (2.0.0)
+      railties (>= 3, < 5.1)
     arel (7.1.4)
     bindex (0.5.0)
     builder (3.2.3)
@@ -156,6 +158,7 @@ PLATFORMS
 DEPENDENCIES
   active_model_serializers
   angular-rails-templates
+  angular_rails_csrf
   byebug
   jbuilder (~> 2.5)
   listen (~> 3.0.5)

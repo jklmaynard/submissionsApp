@@ -19,6 +19,7 @@ gem 'uglifier', '>= 1.3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
 gem 'angular-rails-templates'
+gem 'angular_rails_csrf'
 gem 'active_model_serializers'
 gem 'responders'
 # Use Redis adapter to run Action Cable in production
