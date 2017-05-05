@@ -2,8 +2,8 @@
   <form class="" ng-submit="addSubmission()">
     <input type="text" ng-model="name"></input>
     <span ng-repeat="poem in poems">
-      <label class="checkbox" for={{poem.id}}>
-        <input type="checkbox" name="group" ng-model="selection.poem_ids[poem.id]">{{poem.title}}</input>
+      <label class="checkbox">
+        <input type="checkbox" ng-model="selection.poems[poem.id]" value={{poem.id}}>{{poem.title}}</input>
       </label>
     </span>
     <span ng-repeat="journal in journals">
@@ -11,7 +11,7 @@
         <input type="radio" ng-model="selection.journal" value={{journal.id}}>{{journal.title}}</input>
       </label>
     </span>
-    <pre ng-bind="selection.poem_ids | json"></pre>
+    <pre ng-bind="selection.poems | json"></pre>
     <pre ng-bind="selection.journal | json"></pre>
     <button type="submit" class="btn btn-sm btn-primary">Add Submission</button>
   </form>

@@ -11,10 +11,14 @@ class SubmissionsController < ApplicationController
     end
 
     def create
-      respond_with Submission.create(submission_params)
+      submission = Submission.create(submission_params)
+      params[:poems].each do |poem|
+        submission.poems.push(Poem.find(poem[:id]))
+      end
+      respond_with submission
     end
   private
     def submission_params
-      params.require(:submission).permit(:name, :poems, :journal_id)
+      params.require(:submission).permit(:name, :journal_id, poems: [])
     end
 end
