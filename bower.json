@@ -1,7 +1,7 @@
 {
   "name": "submissionsApp",
   "authors": [
-    "James Maynard <jameskirkmaynard@gmail.com>"
+    "James <james.maynard@modop.com>"
   ],
   "description": "",
   "main": "",
@@ -15,8 +15,6 @@
     "tests"
   ],
   "dependencies": {
-    "angular": "^1.6.4",
-    "angular-ui-router": "^0.4.2",
-    "bootstrap": "^3.3.7"
+    "angular-ui-router": "^1.0.5"
   }
 }
