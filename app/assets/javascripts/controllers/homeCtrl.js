@@ -33,5 +33,13 @@ angular.module('submissionsHub')
         journal_id: parseInt($scope.selection.journal)
       });
     }
+    $scope.addJournal = function() {
+      if (!$scope.journal_title || $scope.journal_title === '') {
+        return;
+      }
+      api.createJournal({title: $scope.journal_title, url: $scope.url});
+      $scope.journal_title = '';
+      $scope.url = '';
+    }
   }
 ])

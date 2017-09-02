@@ -11,7 +11,7 @@ class JournalsController < ApplicationController
     end
 
     def create
-      respond_with Journal.create(journal_paraams)
+      respond_with Journal.create(journal_params)
     end
   private
     def journal_params

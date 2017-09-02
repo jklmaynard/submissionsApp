@@ -38,6 +38,11 @@ angular.module('submissionsHub')
       return $http.post('/submissions.json', submission).then(function(data) {
         obj.submissions.push(data.data);
       })
+    };
+    obj.createJournal = function(journal) {
+      return $http.post('/journals.json', journal).then(function(data) {
+        obj.journals.push(data.data);
+      })
     }
     return obj;
   }
