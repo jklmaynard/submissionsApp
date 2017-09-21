@@ -1,38 +1,46 @@
-<div class="" style="display:flex">
-  <div class="col-md-4">
-    <div class="home-list-div">
-      <h3>Poems</h3>
-      <ul ng-repeat="poem in poems">
-        <a href="#!/poems/{{poem.id}}"><li>{{poem.title}}</li></a>
-      </ul>
-    </div>
-    <div class="add-poem-div">
-      <form ng-submit="addPoem()">
-        <input type="text" ng-model="title"></input><br>
-        <button type="submit" class="btn btn-sm btn-primary">Add Poem</button>
-      </form>
-    </div>
-  </div>
-  <div class="col-md-4">
-    <div class="home-list-div">
-      <h3>Submissions</h3>
-      <ul ng-repeat="submission in submissions">
-        <a href="#!/submissions/{{submission.id}}"><li>{{submission.name}}</li></a>
-      </ul>
-      <a href="#!/new-submission"><button type="button" class="btn btn-sm btn-primary">New Submission</button></a>
+<div class="" style="">
+  <div class="row">
+    <div class="col-md-4">
+      <div class="home-list-div">
+        <h3>Poems</h3>
+        <ul ng-repeat="poem in poems">
+          <a href="#!/poems/{{poem.id}}"><li>{{poem.title}}</li></a>
+        </ul>
+      </div>
+      <div class="add-poem-div">
+        <form ng-submit="addPoem()">
+          <input type="text" ng-model="title"></input><br>
+          <button type="submit" class="btn btn-sm btn-primary">Add Poem</button>
+        </form>
+      </div>
     </div>
   </div>
-  <div class="col-md-4">
-    <div class="home-list-div">
-      <h3>Journals</h3>
-      <ul ng-repeat="journal in journals">
-        <a href="#!/journals/{{journal.id}}"><li>{{journal.title}}</li></a>
-      </ul>
-      <form ng-submit="addJournal()">
-        <input type="text" ng-model="journal_title"></input><br>
-        <input type="text" ng-model="url"></input></br>
-        <button type="submit" class="btn btn-sm btn-primary">Add Journal</button>
-      </form>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="home-list-div">
+        <h3>Submissions</h3>
+        <ul ng-repeat="submission in submissions">
+          <a href="#!/submissions/{{submission.id}}"><li>{{submission.name}}</li></a>
+        </ul>
+        <a href="#!/new-submission"><button type="button" class="btn btn-sm btn-primary">New Submission</button></a>
+      </div>
+    </div>
+  </div>
+
+  <div class="row">
+    <div class="col-md-4">
+      <div class="home-list-div">
+        <h3>Journals</h3>
+        <ul ng-repeat="journal in journals">
+          <a href="#!/journals/{{journal.id}}"><li>{{journal.title}}</li></a>
+        </ul>
+        <form ng-submit="addJournal()">
+          <input type="text" ng-model="journal_title"></input><br>
+          <input type="text" ng-model="url"></input></br>
+          <button type="submit" class="btn btn-sm btn-primary">Add Journal</button>
+        </form>
+      </div>
     </div>
   </div>
 </div>

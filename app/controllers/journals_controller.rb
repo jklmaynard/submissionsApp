@@ -13,8 +13,11 @@ class JournalsController < ApplicationController
     def create
       respond_with Journal.create(journal_params)
     end
+
+    
   private
     def journal_params
       params.require(:journal).permit(:title, :url)
     end
+
 end

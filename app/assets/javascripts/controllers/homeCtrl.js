@@ -12,6 +12,7 @@ angular.module('submissionsHub')
       $scope.title = '';
     };
     $scope.selection = {poems: {}, journal: ''};
+
     $scope.addSubmission = function() {
       var selectedPoems = [];
       if (!$scope.name || $scope.name === '') {return};
@@ -23,16 +24,15 @@ angular.module('submissionsHub')
           }
         }
         return selectedPoems;
-      })
-      // for (key in $scope.selection.poem_ids) {
-      //   selectedPoems.push(parseInt(key));
-      // }
+      });
+
       api.createSubmission({
         name: $scope.name,
         poems: selectedPoems,
         journal_id: parseInt($scope.selection.journal)
       });
-    }
+    };
+
     $scope.addJournal = function() {
       if (!$scope.journal_title || $scope.journal_title === '') {
         return;
@@ -40,6 +40,6 @@ angular.module('submissionsHub')
       api.createJournal({title: $scope.journal_title, url: $scope.url});
       $scope.journal_title = '';
       $scope.url = '';
-    }
+    };
   }
 ])
