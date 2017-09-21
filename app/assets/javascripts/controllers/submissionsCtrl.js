@@ -11,11 +11,9 @@ angular.module('submissionsHub')
         /***** controller functions *****/
 
         let getAcceptedValues = function() {
-          console.log('inside the getAcceptedValues function');
-          $scope.poems.forEach(function(poem) {
-            poem.accepted === true ? poem.accepted_value = "accepted" : poem.accepted_value = "not accepted";
-          });
-
+            $scope.poems.forEach(function(poem) {
+                poem.accepted ? poem.accepted_value = "accepted" : poem.accepted_value = "not accepted";
+            });
         }
 
         /***** _submissions.html scoped functions *****/
@@ -25,6 +23,8 @@ angular.module('submissionsHub')
 
             poem.accepted = true;
             poem.journal_accepted = $scope.journal.title
+
+            api.updatePoem(poem);
             getAcceptedValues();
 
         };

@@ -46,6 +46,12 @@ angular.module('submissionsHub')
             });
         };
 
+        obj.updatePoem = function(poem) {
+            return $http.put(`/poems/${poem.id}.json`, poem).then(function(data) {
+                obj.poems.push(data.data);
+            });
+        }
+
         /***** submission REST *****/
 
         obj.createSubmission = function(submission) {

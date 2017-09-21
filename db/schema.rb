@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170921153048) do
+ActiveRecord::Schema.define(version: 20170921181822) do
 
   create_table "journals", force: :cascade do |t|
     t.string   "title"
@@ -21,10 +21,10 @@ ActiveRecord::Schema.define(version: 20170921153048) do
 
   create_table "poems", force: :cascade do |t|
     t.string   "title"
-    t.datetime "created_at",                     null: false
-    t.datetime "updated_at",                     null: false
-    t.         "accepted",         default: "f"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
     t.string   "journal_accepted"
+    t.boolean  "accepted",         default: false
   end
 
   create_table "poems_submissions", force: :cascade do |t|
