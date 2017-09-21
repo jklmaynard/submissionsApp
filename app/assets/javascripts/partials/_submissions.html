@@ -3,5 +3,6 @@
 <h5>Submitted to {{journal.title}}</h5>
 <div ng-repeat="poem in poems">
   <h5>{{poem.title}}</h5>
-  <p>{{poem.accepted}}</p>
+  <p ng-bind="poem.journal_accepted"></p>
+  <button type="button" name="button" ng-bind="poem.accepted_value" ng-click="poemAccepted($index)"></button>
 </div>
