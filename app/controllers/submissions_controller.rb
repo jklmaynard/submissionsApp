@@ -34,4 +34,5 @@ class SubmissionsController < ApplicationController
       def updated_params
           params.require(:submission).permit(:name, :journal_id, :status)
       end
+
 end

@@ -1,50 +1,56 @@
-angular.module('submissionsHub')
-.controller('HomeCtrl', [
-    '$scope',
-    'api',
+angular.module('submissionsHub').controller(
+    'HomeCtrl',
+    [
+        '$scope',
+        'api',
 
-    function($scope, api) {
-        $scope.poems = api.poems;
-        $scope.submissions = api.submissions;
-        $scope.journals = api.journals;
-        $scope.selection = {poems: {}, journal: ''};
+        function($scope, api) {
 
-        $scope.addPoem = function() {
-            if (!$scope.title || $scope.title === '') {return;}
+            $scope.poems = api.poems;
+            $scope.submissions = api.submissions;
+            $scope.journals = api.journals;
+            $scope.selection = {poems: {}, journal: ''};
 
-            api.createPoem({title: $scope.title});
-            $scope.title = '';
-        };
+            /***** homeCtrl scoped functions *****/
 
-        $scope.addSubmission = function() {
-            var selectedPoems = [];
+            $scope.addPoem = function() {
+                if (!$scope.title || $scope.title === '') {return;}
 
-            if (!$scope.name || $scope.name === '') {return};
-            //run through $scope.poems array
-            $scope.poems.forEach(function(index) {
-                for (key in $scope.selection.poems) {
-                    if (index.id === parseInt(key)) {
-                        selectedPoems.push(index);
+                api.createPoem({title: $scope.title});
+                $scope.title = '';
+            };
+
+            $scope.addSubmission = function() {
+                var selectedPoems = [];
+
+                if (!$scope.name || $scope.name === '') {return};
+                //run through $scope.poems array
+                $scope.poems.forEach(function(index) {
+                    for (key in $scope.selection.poems) {
+                        if (index.id === parseInt(key)) {
+                            selectedPoems.push(index);
+                        }
                     }
+
+                    return selectedPoems;
+                });
+
+                api.createSubmission({
+                    name: $scope.name,
+                    poems: selectedPoems,
+                    journal_id: parseInt($scope.selection.journal)
+                });
+            };
+
+            $scope.addJournal = function() {
+                if (!$scope.journal_title || $scope.journal_title === '') {
+                    return;
                 }
+                api.createJournal( {title: $scope.journal_title, url: $scope.url} );
+                $scope.journal_title = '';
+                $scope.url = '';
+            };
 
-                return selectedPoems;
-            });
-
-            api.createSubmission({
-                name: $scope.name,
-                poems: selectedPoems,
-                journal_id: parseInt($scope.selection.journal)
-            });
-        };
-
-        $scope.addJournal = function() {
-            if (!$scope.journal_title || $scope.journal_title === '') {
-                return;
-            }
-            api.createJournal( {title: $scope.journal_title, url: $scope.url} );
-            $scope.journal_title = '';
-            $scope.url = '';
-        };
-    }
-]);
+        }
+    ]
+);

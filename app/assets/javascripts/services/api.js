@@ -4,23 +4,28 @@ angular.module('submissionsHub')
     function($http) {
         var obj = { poems: [], submissions: [], journals: [] };
 
-        obj.getAll = function(model) {
-            $http.get('/'+ model + '.json').then(function(data) {
-                angular.copy(data.data, obj[model]);
+        obj.getAll = function (model) {
+            $http.get(`/${model}.json`).then(res => {
+                angular.copy(res.data, obj[model]);
             });
         };
 
-        obj.get = function(model, id) {
-              return $http.get('/' + model + '/' + id + '.json').then(function(data) {
+        obj.get = function (model, id) {
+
+            return $http.get(`/${model}/${id}.json`).then(res => {
+
                 if (model === "journals") {
-                    data.data[0].submissions = data.data[1];
-                    return data.data[0];
+                    res.data[0].submissions = res.data[1];
+
+                    return res.data[0];
+
                 } else {
-                    model === "poems" ? data.data[0].submissions = data.data[1] : data.data[0].poems = data.data[1]
-                    return data.data[0];
+                    model === "poems" ? res.data[0].submissions = res.data[1] : res.data[0].poems = res.data[1];
+
+                    return res.data[0];
                 }
-            });
-        };
+            })
+        }
 
         /***** journal REST *****/
 
