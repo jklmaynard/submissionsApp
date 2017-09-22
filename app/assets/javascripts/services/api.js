@@ -5,6 +5,7 @@ angular.module('submissionsHub')
         var obj = { poems: [], submissions: [], journals: [] };
 
         obj.getAll = function (model) {
+          
             $http.get(`/${model}.json`).then(res => {
                 angular.copy(res.data, obj[model]);
             });
@@ -30,45 +31,52 @@ angular.module('submissionsHub')
         /***** journal REST *****/
 
         obj.getJournal = function(id) {
-            return $http.get('/journals/' + id + '.json');
+
+            return $http.get(`/journals/${id}.json`);
         };
 
         obj.createJournal = function(journal) {
-            return $http.post('/journals.json', journal).then(function(data) {
-                obj.journals.push(data.data);
+
+            return $http.post(`/journals.json`, journal),then(res => {
+                obj.journals.push(res.data);
             });
         }
 
         /***** poem REST *****/
 
         obj.getPoems = function(submission_id) {
+
             $http.get('/poems.json');
         };
 
         obj.createPoem = function(poem) {
-            return $http.post('/poems.json', poem).then(function(data) {
-                obj.poems.push(data.data);
+
+            return $http.post(`/poems.json`, poem).then(res => {
+                obj.poems.push(res.data);
             });
         };
 
         obj.updatePoem = function(poem) {
-            return $http.put(`/poems/${poem.id}.json`, poem).then(function(data) {
-                obj.poems.push(data.data);
+
+            return $http.put(`/poems/${poem.id}.json`, poem).then(res => {
+                obj.poems.push(res.data);
             });
         }
 
         /***** submission REST *****/
 
         obj.createSubmission = function(submission) {
-            return $http.post('/submissions.json', submission).then(function(data) {
-                obj.submissions.push(data.data);
-            })
+
+            return $http.post(`/submissions.json`, submission).then(res => {
+                obj.submissions.push(res.data);
+            });
         };
 
         obj.updateSubmission = function(submission) {
-            return $http.put(`/submissions/${submission.id}.json`, submission).then(function(data) {
-                obj.submissions.push(data.data);
-            })
+
+            return $http.put(`/submissions/${submission.id}.json`, submission).then(res => {
+                obj.submissions.push(res.data);
+            });
         }
 
 
