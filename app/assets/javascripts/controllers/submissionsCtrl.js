@@ -32,7 +32,7 @@ angular.module('submissionsHub')
         /***** on _submission.html load *****/
 
         api.getJournal(submission.journal_id).then(function(res) {
-          $scope.journal = res.data[0];
+            $scope.journal = res.data[0];
         });
 
         getAcceptedValues();
