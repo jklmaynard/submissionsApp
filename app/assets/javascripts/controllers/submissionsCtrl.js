@@ -5,7 +5,7 @@ angular.module('submissionsHub')
     'submission',
 
     function($scope, api, submission) {
-        $scope.submission = submission.submissions;
+        $scope.submission = submission;
         $scope.poems = submission.poems;
 
         /***** controller functions *****/
@@ -28,6 +28,13 @@ angular.module('submissionsHub')
             getAcceptedValues();
 
         };
+
+        $scope.submissionComplete = function(submission) {
+            submission.status = "complete";
+
+            api.updateSubmission(submission);
+
+        }
 
         /***** on _submission.html load *****/
 

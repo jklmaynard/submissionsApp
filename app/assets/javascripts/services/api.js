@@ -60,6 +60,12 @@ angular.module('submissionsHub')
             })
         };
 
+        obj.updateSubmission = function(submission) {
+            return $http.put(`/submissions/${submission.id}.json`, submission).then(function(data) {
+                obj.submissions.push(data.data);
+            })
+        }
+
 
         return obj;
     }

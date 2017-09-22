@@ -1,8 +1,14 @@
 <h1>Submissions Page</h1>
 <h2>{{submission.name}}</h2>
 <h5>Submitted to {{journal.title}}</h5>
+<h5>Status: {{submission.status}}</h5>
 <div ng-repeat="poem in poems">
     <h5>{{poem.title}}</h5>
     <p ng-bind="poem.journal_accepted"></p>
     <button type="button" name="button" ng-bind="poem.accepted_value" ng-click="poemAccepted($index)"></button>
+</div>
+
+<div class="">
+    <p ng-bind="submission.status"></p>
+    <button type="button" name="button" ng-click="submissionComplete(submission)">Click to Complete</button>
 </div>
