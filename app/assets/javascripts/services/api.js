@@ -5,7 +5,7 @@ angular.module('submissionsHub')
         var obj = { poems: [], submissions: [], journals: [] };
 
         obj.getAll = function (model) {
-          
+
             $http.get(`/${model}.json`).then(res => {
                 angular.copy(res.data, obj[model]);
             });
@@ -25,8 +25,8 @@ angular.module('submissionsHub')
 
                     return res.data[0];
                 }
-            })
-        }
+            });
+        };
 
         /***** journal REST *****/
 
@@ -40,7 +40,7 @@ angular.module('submissionsHub')
             return $http.post(`/journals.json`, journal),then(res => {
                 obj.journals.push(res.data);
             });
-        }
+        };
 
         /***** poem REST *****/
 
@@ -61,7 +61,7 @@ angular.module('submissionsHub')
             return $http.put(`/poems/${poem.id}.json`, poem).then(res => {
                 obj.poems.push(res.data);
             });
-        }
+        };
 
         /***** submission REST *****/
 
@@ -77,7 +77,7 @@ angular.module('submissionsHub')
             return $http.put(`/submissions/${submission.id}.json`, submission).then(res => {
                 obj.submissions.push(res.data);
             });
-        }
+        };
 
 
         return obj;
