@@ -10,6 +10,7 @@ angular.module('submissionsHub').controller(
             $scope.submissions = api.submissions;
             $scope.journals = api.journals;
             $scope.selection = {poems: {}, journal: ''};
+            $scope.active = {poems: true};
 
             /***** homeCtrl scoped functions *****/
 
@@ -49,6 +50,11 @@ angular.module('submissionsHub').controller(
                 api.createJournal( {title: $scope.journal_title, url: $scope.url} );
                 $scope.journal_title = '';
                 $scope.url = '';
+            };
+
+            $scope.activateTab = function(tab) {
+                $scope.active = {}; //reset
+                $scope.active[tab] = true;
             };
 
         }

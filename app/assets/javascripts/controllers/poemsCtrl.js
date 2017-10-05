@@ -8,9 +8,8 @@ angular.module('submissionsHub').controller(
         function($scope, api, poem) {
 
             $scope.poem = poem;
-            $scope.submissions = poem.submissions
-
-            $scope.status = poem.accepted ? 'Accepted' : ''
+            $scope.submissions = poem.submissions;
+            $scope.status = poem.accepted ? 'Accepted' : '';
 
         }
 
