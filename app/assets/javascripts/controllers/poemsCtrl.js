@@ -10,6 +10,8 @@ angular.module('submissionsHub').controller(
             $scope.poem = poem;
             $scope.submissions = poem.submissions
 
+            $scope.status = poem.accepted ? 'Accepted' : ''
+
         }
 
     ]
