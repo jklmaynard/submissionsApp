@@ -1,5 +1,10 @@
-<h1>Hello world</h1>
 <h2>{{journal.title}}</h2>
-<div ng-repeat="submission in submissions ">
-  <a href="#!/submissions/{{submission.id}}"><h3>{{submission.name}}</h3></a>
+<div ng-repeat="submission in submissions">
+    <a href="#!/submissions/{{submission.id}}"><h3>{{submission.name}}</h3></a>
+    <p>Created: {{submission.created_date}}</p>
+    <p ng-show="submission.complete">Completed on {{submission.updated_date}}</p>
+</div>
+<br>
+<div class="">
+    <a href="#!">Back</a>
 </div>

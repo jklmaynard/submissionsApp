@@ -1,4 +1,3 @@
-<h1>Submissions Page</h1>
 <h2>{{submission.name}}</h2>
 <h5>Submitted to {{journal.title}}</h5>
 <h5>Status: {{submission.status}}</h5>
@@ -11,4 +10,8 @@
 <div class="">
     <p ng-bind="submission.status"></p>
     <button type="button" name="button" ng-click="submissionComplete(submission)">Click to Complete</button>
+</div>
+
+<div class="">
+    <a href="#!/"><button type="button" class="btn btn-primary" name="button">Back</button></a>
 </div>

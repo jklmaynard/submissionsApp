@@ -37,7 +37,7 @@ angular.module('submissionsHub')
 
         obj.createJournal = function(journal) {
 
-            return $http.post(`/journals.json`, journal),then(res => {
+            return $http.post(`/journals.json`, journal).then(res => {
                 obj.journals.push(res.data);
             });
         };

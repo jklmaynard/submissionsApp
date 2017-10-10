@@ -1,13 +1,15 @@
 <h2>{{poem.title}}</h2>
 <div class="">
-  <div class="">
-    <h4>{{status}}</h4>
-  </div>
-  <div class="">
+  <div class="" ng-hide="poem.accepted">
     <h3>Submissions</h3>
     <div ng-repeat="submission in submissions">
       <h5><a href="#!/submissions/{{submission.id}}">{{submission.name}} | Status: {{submission.status}}</a></h5>
     </div>
+  </div>
+  <div class="" ng-show="poem.accepted">
+    <h3>Complete</h3>
+    <p>{{poem.title}} has been accepted to {{poem.journal_accepted}}</p>
+    <p>{{poem.accepted_date}}</p>
   </div>
 </div>
 <div class="">

@@ -9,27 +9,37 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-md-10">
+        <div class="container">
             <div class="tab-content" style="padding-top:20px;">
 
                 <!-- POEMS -->
                 <div id="tab2" ng-show="active.poems">
-                  <div class="row">
-                      <div class="col-md-4">
-                          <div class="home-list-div">
-                              <h3>Poems</h3>
-                              <ul ng-repeat="poem in poems">
-                                  <a href="#!/poems/{{poem.id}}"><li>{{poem.title}}</li></a>
-                              </ul>
-                          </div>
-                          <div class="add-poem-div">
-                              <form ng-submit="addPoem()">
-                                  <input type="text" ng-model="title"></input><br>
-                                  <button type="submit" class="btn btn-sm btn-primary">Add Poem</button>
-                              </form>
-                          </div>
+
+                    <div class="col-md-4">
+                      <div class="home-list-div">
+                          <h3>Poems Submitted</h3>
+                          <ul ng-repeat="poem in poems">
+                              <a ng-hide="poem.accepted" href="#!/poems/{{poem.id}}"><li>{{poem.title}}</li></a>
+                          </ul>
                       </div>
-                  </div>
+                      <div class="home-list-div">
+                          <h3>Poems Accepted</h3>
+                          <ul ng-repeat="poem in poems">
+                              <a ng-show="poem.accepted" href="#!/poems/{{poem.id}}"><li>{{poem.title}}</li></a>
+                          </ul>
+                      </div>
+                    </div>
+                    <br>
+                    <div class="col-md-4">
+                        <div class="add-poem-div">
+                          <h5>Add Poem</h5>
+                          <form ng-submit="addPoem()">
+                            <input placeholder="Poem title" type="text" ng-model="title"></input><br>
+                            <button type="submit" class="btn btn-sm btn-primary">Add Poem</button>
+                          </form>
+                        </div>
+                    </div>
+
                 </div>
 
                 <!-- SUBMISSIONS -->
@@ -57,8 +67,8 @@
                                     <a href="#!/journals/{{journal.id}}"><li>{{journal.title}}</li></a>
                                 </ul>
                                 <form ng-submit="addJournal()">
-                                    <input type="text" ng-model="journal_title"></input><br>
-                                    <input type="text" ng-model="url"></input></br>
+                                    <input placeholder="Journal Name" type="text" ng-model="journal_title"></input><br>
+                                    <input placeholder="URL" type="text" ng-model="url"></input></br>
                                     <button type="submit" class="btn btn-sm btn-primary">Add Journal</button>
                                 </form>
                             </div>
