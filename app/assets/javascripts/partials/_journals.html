@@ -1,4 +1,4 @@
-<h2>{{journal.title}}</h2>
+<h2><a href="{{journal.url}}">{{journal.title}}</a></h2>
 <div ng-repeat="submission in submissions">
     <a href="#!/submissions/{{submission.id}}"><h3>{{submission.name}}</h3></a>
     <p>Created: {{submission.created_date}}</p>

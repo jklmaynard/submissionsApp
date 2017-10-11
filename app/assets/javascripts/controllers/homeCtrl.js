@@ -24,8 +24,9 @@ angular.module('submissionsHub').controller(
             $scope.addSubmission = function() {
                 var selectedPoems = [];
 
+                // if name is empty, return
                 if (!$scope.name || $scope.name === '') {return};
-                //run through $scope.poems array
+                // run through $scope.poems array
                 $scope.poems.forEach(function(index) {
                     for (key in $scope.selection.poems) {
                         if (index.id === parseInt(key)) {
