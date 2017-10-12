@@ -43,12 +43,13 @@ angular.module('submissionsHub').controller(
 
             // functionality for updating submissions
             $scope.removePoem = function(poem_index, submission) {
-
+                // splice out the poem selected to be removed
                 submission.poems.splice(poem_index, 1);
-                console.log(submission.poems);
+
+                // update submission
                 api.updateSubmission(submission);
 
-            }
+            };
 
         }
     ]

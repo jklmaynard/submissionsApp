@@ -15,18 +15,20 @@ class SubmissionsController < ApplicationController
           params[:poems].each do |poem|
               submission.poems.push(Poem.find(poem[:id]))
           end
+
           respond_with submission
       end
 
       def update
           submission = Submission.find(params[:id])
-          submission.poems = [];
-
           submission.update(updated_params)
+
+          # clear out the poems array, to push an update
+          submission.poems = [];
           params[:poems].each do |poem|
-            # clear out the poems array again, to push an update
               submission.poems.push(Poem.find(poem[:id]))
           end
+
           respond_with submission
       end
 
