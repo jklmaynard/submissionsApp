@@ -59,16 +59,6 @@ angular.module('submissionsHub')
 
         /***** poem REST *****/
 
-        obj.getPoems = function(submission_id) {
-
-            // fetching the submission from active record, which returns an array
-            $http.get(`/submissions/${submission_id}.json`).then(res => {
-                // returning the 'poems' array inside the res.data returned value
-                console.log(res.data[1]);
-                return res.data[1];
-            });
-        };
-
         obj.createPoem = function(poem) {
 
             return $http.post(`/poems.json`, poem).then(res => {
