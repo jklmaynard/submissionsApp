@@ -7,18 +7,28 @@ angular.module('submissionsHub').controller(
 
         function ($scope, api, journal) {
 
+            // controller functions
+            let setCalendarDate = function (date) {
+                return new Date(date).toString().split(' ').slice(1,4).join(' ');
+            }
+
+            // scoped variables
             $scope.journal = journal;
 
             $scope.submissions = journal.submissions;
             $scope.submissions.forEach(function(submission) {
-              let updated_date = new Date(submission.updated_at).toString().split(' ').slice(1,4).join(' ');
-              submission.created_date = new Date(submission.created_at).toString().split(' ').slice(1,4).join(' ');
 
-              if (submission.updated_date !== submission.created_date) {
-                submission.updated_date = updated_date;
-              }
+                // write out dates for easy reading
+                let updated_date = setCalendarDate(submission.updated_at);
+                submission.created_date = setCalendarDate(submission.created_at);
 
-              submission.status === "complete" ? submission.complete = true : submission.complete = false;
+                if (submission.updated_date !== submission.created_date) {
+                    submission.updated_date = updated_date;
+                }
+
+                // hide divs if submission is complete
+                submission.status === "complete" ? submission.complete = true : submission.complete = false;
+                console.log(submission.poems);
             });
 
             // functionality for editing Journal

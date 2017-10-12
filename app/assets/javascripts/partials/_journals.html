@@ -6,8 +6,12 @@
     <button type="button" class="btn btn-sm btn-primary" ng-click="updateSubmission=true" ng-hide="updateSubmission">Update</button>
     <div class="" ng-show="updateSubmission">
         <h3>Update {{submission.name}}</h3>
-
-        <button type="button" class="btn btn-sm btn-primary" ng-click="updateSubmission=false;">Cancel</button>
+        Status: <input type="text" ng-model="status" placeholder="{{submission.status}}"><br>
+        <ul ng-repeat="poem in submission.poems">
+            <li>{{poem.title}}</li>
+        </ul>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="">Update</button>
+        <button type="button" class="btn btn-sm btn-warning" ng-click="updateSubmission=false;">Cancel</button>
     </div>
 </div>
 

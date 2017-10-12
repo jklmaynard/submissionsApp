@@ -14,10 +14,18 @@ angular.module('submissionsHub')
         obj.get = function (model, id) {
 
             return $http.get(`/${model}/${id}.json`).then(res => {
-
+                // if the model is journals, pull the related submissions from the returned data array
                 if (model === "journals") {
                     res.data[0].submissions = res.data[1];
 
+                    // since we want to include poems, we'll have to fetch each submission's poems as well
+                    res.data[0].submissions.forEach(function(submission) {
+                        $http.get(`submissions/${submission.id}.json`).then(res => {
+                            // put the poems in an array inside the submission object
+                            submission.poems = res.data[1];
+                        });
+                    });
+                    //return the journal with submissions and poems inside submissions
                     return res.data[0];
 
                 } else {
@@ -53,7 +61,12 @@ angular.module('submissionsHub')
 
         obj.getPoems = function(submission_id) {
 
-            $http.get('/poems.json');
+            // fetching the submission from active record, which returns an array
+            $http.get(`/submissions/${submission_id}.json`).then(res => {
+                // returning the 'poems' array inside the res.data returned value
+                console.log(res.data[1]);
+                return res.data[1];
+            });
         };
 
         obj.createPoem = function(poem) {
