@@ -20,11 +20,15 @@ class SubmissionsController < ApplicationController
 
       def update
           submission = Submission.find(params[:id])
+          submission.poems = [];
 
           submission.update(updated_params)
+          params[:poems].each do |poem|
+            # clear out the poems array again, to push an update
+              submission.poems.push(Poem.find(poem[:id]))
+          end
           respond_with submission
       end
-
 
     private
       def submission_params
@@ -32,7 +36,7 @@ class SubmissionsController < ApplicationController
       end
 
       def updated_params
-          params.require(:submission).permit(:name, :journal_id, :status)
+          params.require(:submission).permit(:name, :journal_id, :status, poems: [])
       end
 
 end

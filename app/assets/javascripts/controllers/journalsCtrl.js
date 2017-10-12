@@ -28,7 +28,7 @@ angular.module('submissionsHub').controller(
 
                 // hide divs if submission is complete
                 submission.status === "complete" ? submission.complete = true : submission.complete = false;
-                console.log(submission.poems);
+
             });
 
             // functionality for editing Journal
@@ -42,7 +42,13 @@ angular.module('submissionsHub').controller(
             };
 
             // functionality for updating submissions
+            $scope.removePoem = function(poem_index, submission) {
 
+                submission.poems.splice(poem_index, 1);
+                console.log(submission.poems);
+                api.updateSubmission(submission);
+
+            }
 
         }
     ]

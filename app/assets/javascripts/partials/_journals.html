@@ -1,14 +1,17 @@
 <h2><a href="{{journal.url}}">{{journal.title}}</a></h2>
 <div ng-repeat="submission in submissions">
-    <a href="#!/submissions/{{submission.id}}"><h3>{{submission.name}}</h3></a>
+    <a href="#!/submissions/{{submission.id}}"><h3>{{submission.name}} id: {{submission.id}}</h3></a>
     <p>Created: {{submission.created_date}} | Status: {{submission.status}}</p>
     <p ng-show="submission.complete">Completed on {{submission.updated_date}}</p>
     <button type="button" class="btn btn-sm btn-primary" ng-click="updateSubmission=true" ng-hide="updateSubmission">Update</button>
     <div class="" ng-show="updateSubmission">
         <h3>Update {{submission.name}}</h3>
-        Status: <input type="text" ng-model="status" placeholder="{{submission.status}}"><br>
+        Status: <input type="text" ng-model="status" placeholder="{{submission.status}}"><br><br>
         <ul ng-repeat="poem in submission.poems">
-            <li>{{poem.title}}</li>
+            <li>
+                <button type="button" class="btn btn-xs btn-warning" ng-click="removePoem($index, submission)">Remove</button>
+                {{poem.title}}
+            </li>
         </ul>
         <button type="button" class="btn btn-sm btn-primary" ng-click="">Update</button>
         <button type="button" class="btn btn-sm btn-warning" ng-click="updateSubmission=false;">Cancel</button>
@@ -18,10 +21,11 @@
 <div class="" ng-show="editMode">
     <h3>Notes</h3>
     <textarea name="name" rows="8" cols="80" ng-model="notes"></textarea><br>
+
     <button type="button" class="btn btn-sm btn-primary" ng-click="updateJournal(journal)">Done</button>
     <button type="button" class="btn btn-sm btn-warning" ng-click="editMode=false">Cancel</button>
-
 </div>
+
 <div class="" ng-hide="editMode">
     <div class="">
         <h3>Notes</h3>
