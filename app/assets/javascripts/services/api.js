@@ -42,6 +42,13 @@ angular.module('submissionsHub')
             });
         };
 
+        obj.updateJournal = function(journal) {
+
+            return $http.put(`/journals/${journal.id}.json`, journal).then(res => {
+                obj.journals.push(res.data);
+            });
+        }
+
         /***** poem REST *****/
 
         obj.getPoems = function(submission_id) {

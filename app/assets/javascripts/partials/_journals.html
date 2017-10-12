@@ -4,6 +4,19 @@
     <p>Created: {{submission.created_date}}</p>
     <p ng-show="submission.complete">Completed on {{submission.updated_date}}</p>
 </div>
+
+<div class="" ng-show="edit_mode">
+    <h3>Notes</h3>
+    <textarea name="name" rows="8" cols="80" ng-model="notes"></textarea>
+    <button type="button" class="btn btn-sm btn-primary" ng-click="updateJournal(journal)">Done</button>
+</div>
+<div class="" ng-hide="edit_mode">
+    <div class="">
+        <h3>Notes</h3>
+        <p>{{journal.notes}}</p>
+    </div>
+    <button type="button" class="btn btn-sm btn-primary" ng-click="addNote()">Add Notes</button>
+</div>
 <br>
 <div class="">
     <a href="#!">Back</a>
