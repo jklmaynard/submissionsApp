@@ -46,10 +46,12 @@ angular.module('submissionsHub').controller(
                 // splice out the poem selected to be removed
                 submission.poems.splice(poem_index, 1);
 
-                // update submission
+            };
+            $scope.finishUpdate = function(submission) {
                 api.updateSubmission(submission);
 
-            };
+                $scope.updateSubmission = false;
+            }
 
         }
     ]
