@@ -21,21 +21,17 @@ angular.module('submissionsHub').controller(
               submission.status === "complete" ? submission.complete = true : submission.complete = false;
             });
 
-
-            $scope.edit_mode = false;
-            $scope.addNote = function() {
-                $scope.edit_mode = true;
-            };
+            // functionality for editing Journal
             $scope.updateJournal = function(journal) {
-
                 if (!$scope.notes || $scope.notes === '') {return;}
                 journal.notes = $scope.notes;
                 api.updateJournal(journal);
 
                 $scope.notes = '';
-                $scope.edit_mode = false;
+                $scope.editMode = false;
             };
 
+            // functionality for updating submissions
 
 
         }
