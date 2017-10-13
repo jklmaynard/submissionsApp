@@ -1,39 +1,64 @@
-<h2><a href="{{journal.url}}">{{journal.title}}</a></h2>
+<h2 style="border-bottom-style:groove;padding-bottom:10px;">
+    <a href="{{journal.url}}">{{journal.title}}</a>
+</h2>
+
 <div ng-repeat="submission in submissions">
-    <a href="#!/submissions/{{submission.id}}"><h3>{{submission.name}} id: {{submission.id}}</h3></a>
-    <p>Created: {{submission.created_date}} | Status: {{submission.status}}</p>
-    <p ng-show="submission.complete">Completed on {{submission.updated_date}}</p>
-    <button type="button" class="btn btn-sm btn-primary" ng-click="updateSubmission=true" ng-hide="updateSubmission">Update</button>
-    <div class="" ng-show="updateSubmission">
-        <h3>Update {{submission.name}}</h3>
-        Status: <input type="text" ng-model="status" placeholder="{{submission.status}}"><br><br>
+    <div class="" ng-hide="updateSubmissionWindow">
+        <a href="#!/submissions/{{submission.id}}">
+          <h4>{{submission.name}}</h4>
+        </a>
+        <p>Created: {{submission.created_date}} | Status: {{submission.status}}</p>
+        <p ng-show="submission.complete">Completed on {{submission.updated_date}}</p>
+        <button type="button" class="btn btn-sm btn-primary" ng-click="updateSubmissionWindow=true">Update</button>
+    </div>
+
+    <div class="" ng-show="updateSubmissionWindow">
+
+        <h4>Edit {{submission.name}}</h4>
+
+        <label for="">Status:</label>
+        <select class="" name="statusSelect" ng-model="submission.status">
+            <option value="not started">Not Started</option>
+            <option value="in progress">In Progress</option>
+            <option value="complete">Complete</option>
+        </select><br><br>
+
         <ul ng-repeat="poem in submission.poems">
             <li>
                 <button type="button" class="btn btn-xs btn-warning" ng-click="removePoem($index, submission)">Remove</button>
                 {{poem.title}}
             </li>
-        </ul>
-        <button type="button" class="btn btn-sm btn-primary" ng-click="finishUpdate(submission)">Update</button>
-        <button type="button" class="btn btn-sm btn-warning" ng-click="updateSubmission=false;">Cancel</button>
+        </ul><br>
+
+        <button type="button" class="btn btn-sm btn-primary" ng-click="finishUpdate(submission); updateSubmissionWindow=false">Update</button>
+        <button type="button" class="btn btn-sm btn-warning" ng-click="updateSubmissionWindow=false">Cancel</button>
     </div>
+
+
 </div>
 
-<div class="" ng-show="editMode">
+<div class="" ng-show="editMode" style="margin-top:60px;">
+
     <h3>Notes</h3>
     <textarea name="name" rows="8" cols="80" ng-model="notes"></textarea><br>
 
     <button type="button" class="btn btn-sm btn-primary" ng-click="updateJournal(journal)">Done</button>
     <button type="button" class="btn btn-sm btn-warning" ng-click="editMode=false">Cancel</button>
+
 </div>
 
 <div class="" ng-hide="editMode">
+
     <div class="">
         <h3>Notes</h3>
         <p>{{journal.notes}}</p>
     </div>
+
     <button type="button" class="btn btn-sm btn-primary" ng-click="editMode=true">Add Notes</button>
+
 </div>
 <br>
+
 <div class="">
     <a href="#!">Back</a>
 </div>

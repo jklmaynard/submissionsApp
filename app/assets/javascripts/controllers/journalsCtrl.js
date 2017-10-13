@@ -50,7 +50,7 @@ angular.module('submissionsHub').controller(
             $scope.finishUpdate = function(submission) {
                 api.updateSubmission(submission);
 
-                $scope.updateSubmission = false;
+                $scope.updateSubmissionWindow = false;
             }
 
         }
