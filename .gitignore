@@ -6,6 +6,9 @@
 
 /vendor/*
 
+# Ignore implementations from IntelliJ
+/submissionsApp.iml
+
 
 # Ignore bundler config.
 /.bundle
