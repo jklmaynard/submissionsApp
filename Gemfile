@@ -23,7 +23,7 @@ gem 'angular-rails-templates'
 gem 'angular_rails_csrf'
 gem 'active_model_serializers'
 gem 'responders'
-gem 'loofah', '~> 2.2.1'
+gem 'loofah', '~> 2.3.1'
 gem 'pg'
 # Use Redis adapter to run Action Cable in production
 # gem 'redis', '~> 3.0'
